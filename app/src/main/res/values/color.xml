@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="gray">#666666</color>
+
+    <color name="lighter_gray">#ddd</color>
+
+    <color name="white">#ffffffff</color>
+
+
+    <color name="grayfont">#C7C7C7</color>
+    <color name="background">#ffff7642</color>
+
+    <color name="gray_normal">#c0c0c0</color>
+    <color name="btn_gray_pressed_status">#b5b5b6</color>
+    <color name="gray_pressed">#666667</color>
+
+    <color name="blue_normal">#7BABC3</color>
+    <color name="blue_pressed">#1e90ff</color>
+
+
+
+</resources>

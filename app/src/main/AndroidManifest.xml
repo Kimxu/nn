@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="kimxu.nn">
+    <!-- Required -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <application
+        android:name=".basic.NNApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="55cabbffe0f55ad2c6003be3" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Yingyonghui" />
+
+        <activity
+
+            android:name=".atys.AtyLogin"
+            android:label="@string/app_name"
+            android:theme="@style/AppNoTitleTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".atys.AtyRegist"
+            android:theme="@style/AppNoTitleTheme"
+
+            />
+        <activity
+            android:name=".atys.AtyAccountBook"
+            android:theme="@style/AppNoTitleTheme" />
+        <activity
+            android:name=".atys.AtyAdd"
+            android:theme="@style/AppNoTitleTheme" />
+
+        <activity
+            android:name=".atys.AtyMain"
+            android:label="@string/app_name" />
+
+    </application>
+
+</manifest>
