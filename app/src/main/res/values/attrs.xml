@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="actionBarMenuIconFilterByInstalled" format="reference"/>
+    <!-- ActionBar - 菜单图标 - 过滤 - 破损包-->
+    <attr name="actionBarMenuIconFilterByBroken" format="reference"/>
+
+
+
+    <attr name="navigationTabStripIconList" format="color|reference"/>
+    <!-- 导航页 - 标签栏 - 文本 - 颜色 -->
+    <attr name="navigationTabStripTextColor" format="color"/>
+
+    <!-- 导航页 - 标签栏 - 背景 -->
+
+    <!-- 导航页 - 标签栏 - 背景 -->
+    <attr name="navigationTabStripBackground" format="color|reference"/>
+    <attr name="yyhCommonForegroundColor" format="color|reference"/>
+    <attr name="yyhCommonBackgroundColor" format="color|reference"/>
+    <attr name="yyhCommonLineColor" format="color|reference"/>
+    <attr name="yyhCommonPressColor" format="color|reference"/>
+
+    <attr name="yyhTextColorPrimary" format="reference"/>
+    <attr name="yyhTextColorSecondary" format="reference"/>
+
+</resources>

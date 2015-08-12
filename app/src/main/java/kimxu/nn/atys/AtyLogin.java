@@ -55,7 +55,7 @@ public class AtyLogin extends AtySupport {
     private void isFirst() {
 
         if (!PreferenceUtil.getBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, true)) {
-         AtyAccountBook.startMe(mActivity);
+         AtyMain.startMe(mActivity);
           finish();
         }
     }
