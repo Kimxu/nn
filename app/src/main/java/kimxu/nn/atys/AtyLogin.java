@@ -55,7 +55,7 @@ public class AtyLogin extends AtySupport {
     private void isFirst() {
 
         if (!PreferenceUtil.getBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, true)) {
-         AtyMain.startMe(mActivity);
+         AtyAccountBook.startMe(mActivity);
           finish();
         }
     }
@@ -79,7 +79,7 @@ public class AtyLogin extends AtySupport {
 
                 if (list.size() == 1) {
                     GlobalUtil.showToast(mActivity, "登陆成功");
-
+                    PreferenceUtil.putString(mActivity,AppConstant.USERNAME,user);
                     AtyMain.startMe(mActivity);
                     PreferenceUtil.putBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, false);
                     finish();

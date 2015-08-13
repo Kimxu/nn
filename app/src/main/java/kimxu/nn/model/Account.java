@@ -8,12 +8,23 @@ import cn.bmob.v3.BmobObject;
 public class Account extends BmobObject{
     public static String USERNAME="username";
     public static String PASSWORD="password";
+    public static String PARTNER="partner";
     private String username;
+    private String partner;
     private String password;
 
-    public Account(String username, String password) {
+    public Account(String username, String password,String partner) {
         this.username = username;
         this.password = password;
+        this.partner=partner;
+    }
+
+    public String getPartner() {
+        return partner;
+    }
+
+    public void setPartner(String partner) {
+        this.partner = partner;
     }
 
     public String getUsername() {

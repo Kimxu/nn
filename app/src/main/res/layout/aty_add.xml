@@ -4,21 +4,35 @@
     android:orientation="vertical"
     >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="300dp">
-
+    <GridView
+        android:background="@color/white"
+        android:id="@+id/grid_show_icon"
+        android:stretchMode="columnWidth"
+        android:numColumns="auto_fit"
+        android:columnWidth="50dp"
+        android:layout_centerInParent="true"
+        android:listSelector="@color/white"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:padding="5dp"
+        android:layout_above="@+id/tv_show_count"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
         <TextView
-            android:id="@+id/show_count"
+            android:id="@+id/tv_show_count"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="23232"
+            android:layout_height="60dp"
+            android:textColor="@color/white"
             android:textSize="24sp"
+            android:layout_alignParentBottom="true"
             android:paddingLeft="5dp"
             android:gravity="center|left"
             android:layout_gravity="bottom" />
-    </LinearLayout>
+    </RelativeLayout>
 
 
     <LinearLayout
@@ -55,10 +69,10 @@
                     android:text="3" />
 
                 <Button
-                    android:id="@+id/besc"
+                    android:id="@+id/bequals"
                     style="@style/ButtonAdd"
 
-                    android:text="esc" />
+                    android:text="=" />
             </TableRow>
 
             <TableRow
@@ -180,7 +194,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="OK" />
+                android:text="提交" />
 
 
         </LinearLayout>

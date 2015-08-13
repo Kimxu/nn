@@ -1,8 +1,5 @@
 package kimxu.nn.adapter;
 
-/**
- * Created by xuzhiguo on 15/7/24.
- */
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,25 +7,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import kimxu.nn.R;
 
-public class TimelineAdapter extends BaseAdapter {
+public class ShowIconAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Map<String, Object>> list;
+    private List<Integer> list;
     private LayoutInflater inflater;
 
-    public TimelineAdapter(Context context, List<Map<String, Object>> list) {
+    public ShowIconAdapter(Context context) {
         super();
         this.context = context;
-        this.list = list;
+        list = new ArrayList<>();
+        addDatas(list);
+    }
+
+    private void addDatas(List<Integer> list) {
+        for (int i = 0; i <= 39; i++) {//循环装载所有名字类似的资源如“a1、a2……a15”的图片
+            int id = context.getResources().getIdentifier("type_big_" + i, "drawable", context.getPackageName());
+            list.add(id);
+        }
     }
 
     @Override
@@ -44,41 +48,28 @@ public class TimelineAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return position;
+
+        return list.get(position);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        int did =list.get(position);
+        ViewHolder viewHolder;
         if (convertView == null) {
             inflater = LayoutInflater.from(parent.getContext());
-            convertView = inflater.inflate(R.layout.list_item_time, null);
+            convertView = inflater.inflate(R.layout.list_item_show_icon, null);
             viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        String desc = list.get(position).get("desc").toString();
-        String time = list.get(position).get("time").toString();
-        viewHolder.desc.setText(desc);
-        viewHolder.time.setText(time);
-
+        viewHolder.icon.setBackground(context.getResources().getDrawable(did));
         return convertView;
     }
-
-    /**
-     * This class contains all butterknife-injected Views & Layouts from layout file 'list_item_timem_time.xml'
-     * for easy to all layout elements.
-     *
-     * @author ButterKnifeZelezny, plugin for Android Studio by Avast Developers (http://github.com/avast)
-     */
     static class ViewHolder {
         @Bind(R.id.icon)
         ImageView icon;
-        @Bind(R.id.time)
-        TextView time;
-        @Bind(R.id.desc)
-        TextView desc;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

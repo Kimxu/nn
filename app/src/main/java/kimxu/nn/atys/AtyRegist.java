@@ -53,7 +53,7 @@ public class AtyRegist extends AtySupport {
     }
 
     private void submit(String user, String pwd) {
-        Account account=new Account(user,pwd);
+        Account account=new Account(user,pwd,"");
         GlobalUtil.showLoadingDialog(mActivity, "注册中...");
         account.save(mActivity, new SaveListener() {
 

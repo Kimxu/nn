@@ -4,57 +4,62 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.race604.flyrefresh.FlyRefreshLayout;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobDate;
+import cn.bmob.v3.datatype.BmobQueryResult;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SQLQueryListener;
 import kimxu.nn.R;
+import kimxu.nn.adapter.AccountBookAdapter;
 import kimxu.nn.basic.AtySupport;
-import kimxu.nn.list.ItemData;
 import kimxu.nn.list.SampleItemAnimator;
+import kimxu.nn.model.Bill;
+import kimxu.nn.utils.GlobalUtil;
+import kimxu.nn.utils.logger.Klog;
 
 /**
  * Created by xuzhiguo on 15/8/11.
-
  */
 public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPullRefreshListener {
 
     private FlyRefreshLayout mFlylayout;
     private RecyclerView mListView;
 
-    private ItemAdapter mAdapter;
+    private AccountBookAdapter mAdapter;
 
-    private ArrayList<ItemData> mDataSet = new ArrayList<>();
-    private Handler mHandler = new Handler();
+    private Handler mHandler;
     private LinearLayoutManager mLayoutManager;
     protected MenuItem refreshItem;
+
+
+    private static final int RESULT_SUCCESS_HAVE_DATA = 0010;
+    private static final int RESULT_SUCCESS_NO_DATA = 0012;
+    private static final int RESULT_ERROR = 0011;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initDataSet();
         setContentView(R.layout.aty_account_book);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -68,12 +73,39 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
         mListView = (RecyclerView) findViewById(R.id.list);
 
         mLayoutManager = new LinearLayoutManager(this);
-        mListView.setLayoutManager(mLayoutManager);
-        mAdapter = new ItemAdapter(this);
-
-        mListView.setAdapter(mAdapter);
 
         mListView.setItemAnimator(new SampleItemAnimator());
+
+        mListView.setLayoutManager(mLayoutManager);
+
+
+        initDatas();
+
+
+        mHandler = new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                if (mActivity != null) {
+                    switch (msg.what) {
+                        case RESULT_SUCCESS_HAVE_DATA:
+                            mFlylayout.onRefreshFinish();
+                            break;
+                        case RESULT_SUCCESS_NO_DATA:
+                            GlobalUtil.showToast(mActivity, "没有新数据刷新啦");
+                            mFlylayout.onRefreshFinish();
+
+                            break;
+                        case RESULT_ERROR:
+                            mFlylayout.onRefreshFinish();
+
+                            break;
+                    }
+                }
+
+            }
+        };
+
+
     }
 
     @Override
@@ -81,32 +113,61 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
         return "AtyAccountBook";
     }
 
-    private void initDataSet() {
-        mDataSet.add(new ItemData(Color.parseColor("#76A9FC"), R.mipmap.ic_assessment_white_24dp, "Meeting Minutes", new Date(2014 - 1900, 2, 9)));
-        mDataSet.add(new ItemData(Color.GRAY, R.mipmap.ic_folder_white_24dp, "Favorites Photos", new Date(2014 - 1900, 1, 3)));
-        mDataSet.add(new ItemData(Color.GRAY, R.mipmap.ic_folder_white_24dp, "Photos", new Date(2014 - 1900, 0, 9)));
-    }
+    List<Bill> tempData = null;
 
     private void addItemData() {
-        ItemData itemData = new ItemData(Color.parseColor("#FFC970"), R.mipmap.ic_smartphone_white_24dp, "Magic Cube Show", new Date());
-        mDataSet.add(0, itemData);
-        mAdapter.notifyItemInserted(0);
-        mLayoutManager.scrollToPosition(0);
+        BmobQuery<Bill> query = new BmobQuery<>();
+        query.addWhereGreaterThan("createdAt", createdAt);
+        query.addWhereEqualTo(Bill.USERNAME, getUserName());
+        query.order("-createdAt");
+        query.findObjects(mActivity, new FindListener<Bill>() {
+            @Override
+            public void onSuccess(List<Bill> list) {
+                if (list.size() == 1) {
+                    Message msg = Message.obtain();
+                    msg.what = RESULT_SUCCESS_NO_DATA;
+                    mHandler.sendMessage(msg);
+                    return;
+                }
+
+                Message msg = Message.obtain();
+                msg.what = RESULT_SUCCESS_HAVE_DATA;
+                list.remove(0);
+                tempData = list;
+                createdAt = GlobalUtil.dateToBmobDate(list.get(0).getCreatedAt());
+                mHandler.sendMessage(msg);
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                Message msg = Message.obtain();
+
+                msg.what = RESULT_ERROR;
+                mHandler.sendMessage(msg);
+
+            }
+        });
+
+//        mAdapter.notifyItemInserted(0);
+//        mLayoutManager.scrollToPosition(0);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_add_account) {
             showRefreshAnimation(item);
-           return true;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void showRefreshAnimation(MenuItem item) {
         hideRefreshAnimation();
         refreshItem = item;
@@ -137,6 +198,7 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
             }
         });
     }
+
     private void hideRefreshAnimation() {
         if (refreshItem != null) {
             View view = refreshItem.getActionView();
@@ -147,26 +209,45 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
         }
     }
 
+    private BmobDate createdAt;
 
+    private void initDatas() {
+        BmobQuery<Bill> query = new BmobQuery<Bill>();
 
+        String sql = "select * from Bill where username = ? order by -createdAt";
 
+        query.doSQLQuery(mActivity, sql, new SQLQueryListener<Bill>() {
+            @Override
+            public void done(BmobQueryResult<Bill> bmobQueryResult, BmobException e) {
+                if (e == null) {
+                    List<Bill> list = bmobQueryResult.getResults();
+                    if (list != null && list.size() > 0) {
+                        createdAt = GlobalUtil.dateToBmobDate(list.get(0).getCreatedAt());
 
+                        mAdapter = new AccountBookAdapter(mActivity, list);
+                        mListView.setAdapter(mAdapter);
+                    } else {
+                        Log.i("smile", "查询成功，无数据返回");
+                    }
+                } else {
+                    Klog.i("错误码：" + e.getErrorCode() + "，错误描述：" + e.getMessage());
+                }
 
+            }
+        }, getUserName());
+    }
 
 
     @Override
     public void onRefresh(FlyRefreshLayout view) {
+
+
         View child = mListView.getChildAt(0);
         if (child != null) {
             bounceAnimateView(child.findViewById(R.id.icon));
         }
 
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mFlylayout.onRefreshFinish();
-            }
-        }, 2000);
+        addItemData();
     }
 
     private void bounceAnimateView(View view) {
@@ -182,53 +263,9 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
 
     @Override
     public void onRefreshAnimationEnd(FlyRefreshLayout view) {
-        addItemData();
-    }
-
-    private class ItemAdapter extends RecyclerView.Adapter<ItemViewHolder> {
-
-        private LayoutInflater mInflater;
-        private DateFormat dateFormat;
-
-        public ItemAdapter(Context context) {
-            mInflater = LayoutInflater.from(context);
-            dateFormat = SimpleDateFormat.getDateInstance(DateFormat.DEFAULT, Locale.ENGLISH);
-        }
-
-        @Override
-        public ItemViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-            View view = mInflater.inflate(R.layout.list_item_account, viewGroup, false);
-            return new ItemViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(ItemViewHolder itemViewHolder, int i) {
-            final ItemData data = mDataSet.get(i);
-            ShapeDrawable drawable = new ShapeDrawable(new OvalShape());
-            drawable.getPaint().setColor(data.color);
-            itemViewHolder.icon.setBackgroundDrawable(drawable);
-            itemViewHolder.icon.setImageResource(data.icon);
-            itemViewHolder.title.setText(data.title);
-            itemViewHolder.subTitle.setText(dateFormat.format(data.time));
-        }
-
-        @Override
-        public int getItemCount() {
-            return mDataSet.size();
-        }
-    }
-
-    private static class ItemViewHolder extends RecyclerView.ViewHolder {
-
-        ImageView icon;
-        TextView title;
-        TextView subTitle;
-
-        public ItemViewHolder(View itemView) {
-            super(itemView);
-            icon = (ImageView) itemView.findViewById(R.id.icon);
-            title = (TextView) itemView.findViewById(R.id.title);
-            subTitle = (TextView) itemView.findViewById(R.id.subtitle);
+        if (tempData != null) {
+            mAdapter.addDatas(tempData);
+            tempData = null;
         }
 
     }

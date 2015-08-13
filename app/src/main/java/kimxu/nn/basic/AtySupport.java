@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.umeng.analytics.MobclickAgent;
 
+import kimxu.nn.AppConstant;
 import kimxu.nn.skin.SkinHolder;
+import kimxu.nn.utils.PreferenceUtil;
 
 /**
  *  父类activity
@@ -34,6 +36,11 @@ public abstract class AtySupport extends AppCompatActivity {
         super.onPause();
         MobclickAgent.onPause(mActivity);
         MobclickAgent.onPageEnd(getActivityName());
+    }
+
+
+    public String getUserName(){
+       return  PreferenceUtil.getString(mActivity, AppConstant.USERNAME,"");
     }
 
     public abstract String getActivityName();
