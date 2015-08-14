@@ -1,45 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-
-
     <!-- 亮色皮肤 -->
-    <style name="Skin.Light" parent="AppTheme">
-        <item name="navigationTabStripBackground">#F1F1F1</item>
-        <!-- colorPrimary is used for the default action bar background -->
+    <style name="Skin.Light" parent="BaseActivityTheme">
         <item name="colorPrimary">@color/background</item>
-
-        <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/background</item>
-
-        <!-- colorAccent is used as the default value for colorControlActivated
-             which is used to tint widgets -->
         <item name="colorAccent">@color/background</item>
-
-        <!-- You can also set colorControlNormal, colorControlActivated
-             colorControlHighlight & colorSwitchThumbNormal. -->
+        <item name="kThemeBackground">@color/background</item>
 
     </style>
-
-
-
+    <style name="Skin.Light.NoActionBar" parent="Skin.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
     <!-- 暗色皮肤 -->
-    <style name="Skin.Dark" parent="AppTheme">
-        <!-- colorPrimary is used for the default action bar background -->
+    <style name="Skin.Dark" parent="BaseActivityTheme">
         <item name="colorPrimary">@color/abc_search_url_text</item>
-
-        <!-- colorPrimaryDark is used for the status bar -->
         <item name="colorPrimaryDark">@color/abc_search_url_text</item>
-
-        <!-- colorAccent is used as the default value for colorControlActivated
-             which is used to tint widgets -->
         <item name="colorAccent">@color/abc_search_url_text</item>
-
-        <!-- You can also set colorControlNormal, colorControlActivated
-             colorControlHighlight & colorSwitchThumbNormal. -->
-
-
+        <item name="kThemeBackground">@color/abc_search_url_text</item>
     </style>
-
+    <style name="Skin.Dark.NoActionBar" parent="Skin.Dark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 </resources>

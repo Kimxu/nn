@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:duplicateParentState="true"
-            android:src="@drawable/composer_icn_plus" />
+            android:src="@drawable/composer_icn_plus_normal" />
     </FrameLayout>
 
 </merge>

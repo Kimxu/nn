@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import kimxu.nn.skin.Skin;
 import kimxu.nn.skin.SkinHolder;
 
-
 /**
  * 皮肤管理器，用来更改皮肤和获取所有皮肤
  */
@@ -34,18 +33,18 @@ public class SkinManager {
 	 * @param skinEnum 
 	 */
 	public void setSkin(SkinEnum skinEnum){
-		preferences.edit().putString(KEY_SKIN, skinEnum.name()).commit();
+		preferences.edit().putString(KEY_SKIN, skinEnum.name()).apply();
 		SkinHolder.setSkin(skinEnum);
 		setColorPrimary(skinEnum.getColorPrimary());
 		setColorPrimaryDark(skinEnum.getColorPrimaryDark());
 	}
 	
 	public void setColorPrimary(int color){
-		preferences.edit().putInt(COLOR_PRIMARY, color).commit();
+		preferences.edit().putInt(COLOR_PRIMARY, color).apply();
 	}
 	
 	public void setColorPrimaryDark(int color){
-		preferences.edit().putInt(COLOR_PRIMARY_DARK, color).commit();
+		preferences.edit().putInt(COLOR_PRIMARY_DARK, color).apply();
 	}
 	
 	public int getTabStripColor(){
@@ -62,7 +61,7 @@ public class SkinManager {
 	public int getColorPrimary(){
 		Skin skin = SkinHolder.getSkin(context);
 		if(TextUtils.equals(skin.getEnumName(), "LIGHT")) {
-			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#F1F1F1"));
+			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#1e90ff"));
 		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
 			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#2E3038"));
 		} else {

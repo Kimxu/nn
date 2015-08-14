@@ -39,7 +39,7 @@ import kimxu.nn.utils.GlobalUtil;
 import kimxu.nn.utils.logger.Klog;
 
 /**
- * Created by xuzhiguo on 15/8/11.
+ * 主页
  */
 public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPullRefreshListener {
 
@@ -116,6 +116,9 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
     List<Bill> tempData = null;
 
     private void addItemData() {
+        if(createdAt==null)
+            return;
+
         BmobQuery<Bill> query = new BmobQuery<>();
         query.addWhereGreaterThan("createdAt", createdAt);
         query.addWhereEqualTo(Bill.USERNAME, getUserName());
@@ -209,7 +212,7 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
         }
     }
 
-    private BmobDate createdAt;
+    private BmobDate createdAt =null;
 
     private void initDatas() {
         BmobQuery<Bill> query = new BmobQuery<Bill>();

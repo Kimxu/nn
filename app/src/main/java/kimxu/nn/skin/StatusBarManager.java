@@ -2,7 +2,6 @@ package kimxu.nn.skin;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.WindowManager;
 
@@ -13,16 +12,16 @@ public class StatusBarManager {
 		if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && 
 				!activity.getClass().isAnnotationPresent(DisableUseTranslucentStatus.class)) {
 			
-			int color = Color.BLACK;
-			color = SkinHolder.getColorPrimaryDark(activity);
-			
+			//int color = Color.BLACK;
+			int color = SkinHolder.getColorPrimary(activity);
+			//activity.getResources().getColor(R.color.red_btn_bg_color)
 			if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 				//棒棒糖以上，使用系统支持的设置方式
 				//有些手机乱改版本号，导致判断错误，走了错的分支，冇該
 				try{
 					activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 					activity.getWindow().setStatusBarColor(color);
-				} catch (Exception e) {
+				} catch (Exception ignored) {
 					
 				}
 			} else {

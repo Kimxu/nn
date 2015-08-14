@@ -13,66 +13,69 @@ import kimxu.nn.utils.ColorUtil;
  * 皮肤枚举对象
  */
 public enum SkinEnum implements Skin {
-	
-	DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light, Color.parseColor("#F1F1F1")){
-		@Override
-		public Drawable getPreviewDrawable(Context context) {
-			return new ColorDrawable(Color.parseColor("#F1F1F1"));
-		}
-	},
-		DRAK("\ue619\ue608", R.style.Skin_Dark, R.style.Skin_Dark, Color.parseColor("#DB4D6D")){
-		@Override
-		public Drawable getPreviewDrawable(Context context) {
-			return new ColorDrawable(Color.parseColor("#DB4D6D"));
-		}
-	};
-	
 
-	
-	private String name;
-	private int themeId;
-	private int noShadowThemeId;
-	private int colorPrimary;
-	
-	private SkinEnum(String name, int themeId, int noShadowThemeId, int colorPrimary) {
-		this.name = name;
-		this.themeId = themeId;
-		this.noShadowThemeId = noShadowThemeId;
-		this.colorPrimary = colorPrimary;
-	}
-	
-	public String getEnumName() {
-		return this.name();
-	}
+    DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light_NoActionBar, Color.parseColor("#ffff7642")) {
+        @Override
+        public Drawable getPreviewDrawable(Context context) {
+            return new ColorDrawable(Color.parseColor("#ffff7642"));
+        }
+    },
+    DRAK("\ue619\ue608", R.style.Skin_Dark,R.style.Skin_Dark_NoActionBar, Color.parseColor("#DB4D6D")) {
+        @Override
+        public Drawable getPreviewDrawable(Context context) {
+            return new ColorDrawable(Color.parseColor("#DB4D6D"));
+        }
+    };
 
-	@Override
-	public String getName() {
-		return name;
-	}
 
-	@Override
-	public int getThemeId() {
-		return themeId;
-	}
+    private String name;
+    private int themeId;
+    private int colorPrimary;
+    private int noActionBarThemeId;
 
-	@Override
-	public int getNoShadowThemeId() {
-		return noShadowThemeId;
-	}
-	
+    SkinEnum(String name, int themeId,int noActionBarThemeId, int colorPrimary) {
+        this.name = name;
+        this.noActionBarThemeId = noActionBarThemeId;
+        this.themeId = themeId;
+        this.colorPrimary = colorPrimary;
+    }
 
-	public int getColorPrimary() {
-		return colorPrimary;
-	}
-	
-	public int getColorPrimaryDark(){
-		return ColorUtil.darken(colorPrimary);
-	}
+    @Override
+    public int getNoActionBarThemeId() {
+        return noActionBarThemeId;
+    }
 
-	/**
-	 * 获取在主题切换页面显示的预览图片
-	 * @param context
-	 * @return
-	 */
-	public abstract Drawable getPreviewDrawable(Context context);
+    public String getEnumName() {
+        return this.name();
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int getThemeId() {
+        return themeId;
+    }
+
+    public int getColorPrimary() {
+        return colorPrimary;
+    }
+
+    /**
+     * 比正常颜色
+     * @return
+     */
+    public int getColorPrimaryDark() {
+        return ColorUtil.darken(colorPrimary);
+    }
+
+    /**
+     * 获取在主题切换页面显示的预览图片
+     *
+     * @param context
+     * @return
+     */
+    public abstract Drawable getPreviewDrawable(Context context);
 }

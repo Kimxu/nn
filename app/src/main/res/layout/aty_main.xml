@@ -11,10 +11,9 @@
 
     <kimxu.arcmenu.RayMenu
         android:layout_alignParentBottom="true"
-
         android:id="@+id/ray_menu"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"/>
 </RelativeLayout>

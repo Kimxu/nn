@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 
-import kimxu.nn.R;
 import kimxu.nn.skin.Skin;
 import kimxu.nn.skin.SkinHolder;
 
@@ -36,11 +35,12 @@ public class SkinAttrParser {
 	
 	/**
 	 * 导航页标签栏皮肤解析器
+	 * 	R.attr.navigationTabStripIconList,
+	 R.attr.navigationTabStripTextColor
 	 */
 	public static class NavigationTabStrip {
 		private static final int[] ATTRS = new int[]{
-			R.attr.navigationTabStripIconList,
-			R.attr.navigationTabStripTextColor
+
 				};
 		
 		private TypedArray typedArray;
@@ -126,11 +126,12 @@ public class SkinAttrParser {
 	
 	/**
 	 * 排序菜单图标解析器
+	 * 	R.attr.actionBarMenuIconFilterByInstalled,
+	 R.attr.actionBarMenuIconFilterByBroken,
 	 */
 	public static class SortMenuIcon {
 		private static final int[] ATTRS = new int[] {
-				R.attr.actionBarMenuIconFilterByInstalled,
-				R.attr.actionBarMenuIconFilterByBroken,
+
 			};
 
 		private TypedArray typedArray;

@@ -7,7 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 不使用皮肤
+ * 状态栏不使用皮肤
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)

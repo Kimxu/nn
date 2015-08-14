@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <style name="BaseActivityTheme">
-
-        <!-- 上面部分是sherlock 相关需要设置的属性，由于历史原因不好修改，以下部分为新抽取的属性，属常规业务 -->
-        <item name="yyhTextColorPrimary">@color/text_color</item>
-        <item name="yyhTextColorSecondary">@color/tpi_checked</item>
-        <item name="yyhCommonForegroundColor">@color/tpi_checked</item>
-        <item name="yyhCommonBackgroundColor">@color/tpi_checked</item>
-        <item name="yyhCommonPressColor">@color/tpi_checked</item>
-        <item name="yyhCommonLineColor">@color/tpi_checked</item>
-
-    </style>
-
-
-
+    <style name="BaseActivityTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+     </style>
 </resources>

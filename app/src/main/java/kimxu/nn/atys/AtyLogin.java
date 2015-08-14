@@ -18,12 +18,14 @@ import kimxu.nn.AppConstant;
 import kimxu.nn.R;
 import kimxu.nn.basic.AtySupport;
 import kimxu.nn.model.Account;
+import kimxu.nn.skin.NoActionBarTheme;
 import kimxu.nn.utils.GlobalUtil;
 import kimxu.nn.utils.PreferenceUtil;
 
 /**
- * 等了界面
+ * 登陆界面
  */
+@NoActionBarTheme
 public class AtyLogin extends AtySupport {
 
     @Bind(R.id.username)
@@ -55,7 +57,7 @@ public class AtyLogin extends AtySupport {
     private void isFirst() {
 
         if (!PreferenceUtil.getBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, true)) {
-         AtyAccountBook.startMe(mActivity);
+         AtyMain.startMe(mActivity);
           finish();
         }
     }
@@ -79,9 +81,9 @@ public class AtyLogin extends AtySupport {
 
                 if (list.size() == 1) {
                     GlobalUtil.showToast(mActivity, "登陆成功");
-                    PreferenceUtil.putString(mActivity,AppConstant.USERNAME,user);
-                    AtyMain.startMe(mActivity);
+                    PreferenceUtil.putString(mActivity, AppConstant.USERNAME, user);
                     PreferenceUtil.putBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, false);
+                    AtyMain.startMe(mActivity);
                     finish();
                 }
                 GlobalUtil.closeDialog();

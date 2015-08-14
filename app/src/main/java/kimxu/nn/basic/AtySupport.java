@@ -8,6 +8,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import kimxu.nn.AppConstant;
 import kimxu.nn.skin.SkinHolder;
+import kimxu.nn.skin.StatusBarManager;
 import kimxu.nn.utils.PreferenceUtil;
 
 /**
@@ -19,11 +20,12 @@ public abstract class AtySupport extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mActivity = this;
         SkinHolder.applySkin(this);
+        StatusBarManager.applyTranslucentStatusBar(this);
 
-    }
-
+        }
     @Override
     public void onResume() {
         super.onResume();

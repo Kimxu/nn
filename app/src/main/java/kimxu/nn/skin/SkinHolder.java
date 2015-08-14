@@ -3,10 +3,11 @@ package kimxu.nn.skin;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+
+import kimxu.nn.utils.logger.Klog;
 
 /**
  * 当前皮肤持有者，用来获取和设置当前皮肤
@@ -19,7 +20,7 @@ public class SkinHolder {
 	
 	/**
 	 * 设置皮肤
-	 * @param shin
+	 * @param shin .
 	 */
 	public static void setSkin(Skin shin){
 		SkinHolder.currentSkin = shin;
@@ -27,8 +28,8 @@ public class SkinHolder {
 	
 	/**
 	 * 获取当前皮肤
-	 * @param context
-	 * @return
+	 * @param context .
+	 * @return Skin
 	 */
 	public static Skin getSkin(Context context){
 		if(currentSkin == null){
@@ -55,7 +56,12 @@ public class SkinHolder {
 		}
 		return color;
 	}
-	
+
+	/**
+	 * 比正常浅
+	 * @param context .
+	 * @return int
+	 */
 	public static int getColorPrimaryDark(Context context){
 		int color = Color.BLACK;
 		try{
@@ -78,15 +84,17 @@ public class SkinHolder {
     		return;
     	}
     	if(activity.getClass().isAnnotationPresent(DisableUseSkin.class)){
-    		Log.d("Skin", activity.getClass().getName()+" disable use skin");
+    		Klog.d(activity.getClass().getName() + " disable use skin");
     		return;
     	}
+
+
 		Skin skin = SkinHolder.getSkin(activity.getBaseContext());
 		if(skin == null){
 			new IllegalArgumentException("not found skin").printStackTrace();
 			return;
 		}
-		int themeId = activity.getClass().isAnnotationPresent(NoShadowTheme.class)?skin.getNoShadowThemeId():skin.getThemeId();
+		int themeId = activity.getClass().isAnnotationPresent(NoActionBarTheme.class)?skin.getNoActionBarThemeId():skin.getThemeId();
 		activity.setTheme(themeId);
     }
 }

@@ -21,10 +21,10 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import kimxu.arcmenu.RayMenu;
-import kimxu.nn.basic.AtySupport;
 import kimxu.nn.R;
 import kimxu.nn.adapter.TimelineAdapter;
-
+import kimxu.nn.basic.AtySupport;
+import kimxu.nn.skin.StatusBarManager;
 
 public class AtyMain extends AtySupport {
 
