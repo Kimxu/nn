@@ -18,6 +18,7 @@ public class SkinManager {
 	private  static final String KEY_SKIN = "PREF_KEY_SKIN";
 	private static final String COLOR_PRIMARY = "PREF_KEY_COLOR_PRIMARY";
 	private static final String COLOR_PRIMARY_DARK = "PREF_KEY_COLOR_PRIMARY_DARK";
+	private static final String COLOR_ICON = "PREF_KEY_COLOR_ICON";
 	private SharedPreferences preferences;
 	private Context context;
 	
@@ -26,9 +27,10 @@ public class SkinManager {
 		String skinName = preferences.getString(KEY_SKIN, SkinEnum.DEFAULT.name());
 		SkinHolder.setSkin(SkinEnum.valueOf(skinName));
 		this.context = context;
+		setSkin(SkinEnum.valueOf(skinName));
 	}
-	
 	/**
+	 * TODO 这里有些问题 每次初始化都会调用
 	 * 设置皮肤
 	 * @param skinEnum 
 	 */
@@ -37,6 +39,7 @@ public class SkinManager {
 		SkinHolder.setSkin(skinEnum);
 		setColorPrimary(skinEnum.getColorPrimary());
 		setColorPrimaryDark(skinEnum.getColorPrimaryDark());
+		setColorIcon(skinEnum.getColorIcon());
 	}
 	
 	public void setColorPrimary(int color){
@@ -46,21 +49,13 @@ public class SkinManager {
 	public void setColorPrimaryDark(int color){
 		preferences.edit().putInt(COLOR_PRIMARY_DARK, color).apply();
 	}
-	
-	public int getTabStripColor(){
-		Skin skin = SkinHolder.getSkin(context);
-		if(TextUtils.equals(skin.getEnumName(), "LIGHT") || TextUtils.equals(skin.getEnumName(), "DEFAULT")) {
-			return Color.parseColor("#1588FE");
-		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
-			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#2E3038"));
-		} else {
-			return skin.getColorPrimary();
-		}
+	public void setColorIcon(int color){
+		preferences.edit().putInt(COLOR_ICON, color).apply();
 	}
-	
+
 	public int getColorPrimary(){
 		Skin skin = SkinHolder.getSkin(context);
-		if(TextUtils.equals(skin.getEnumName(), "LIGHT")) {
+		if(TextUtils.equals(skin.getEnumName(), "DEFAULT")) {
 			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#1e90ff"));
 		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
 			return preferences.getInt(COLOR_PRIMARY, Color.parseColor("#2E3038"));
@@ -71,7 +66,7 @@ public class SkinManager {
 	
 	public int getColorPrimaryDark(){
 		Skin skin = SkinHolder.getSkin(context);
-		if(TextUtils.equals(skin.getEnumName(), "LIGHT")) {
+		if(TextUtils.equals(skin.getEnumName(), "DEFAULT")) {
 			return preferences.getInt(COLOR_PRIMARY_DARK, Color.parseColor("#F1F1F1"));
 		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
 			return preferences.getInt(COLOR_PRIMARY_DARK, Color.parseColor("#2E3038"));
@@ -87,7 +82,18 @@ public class SkinManager {
 	public SkinEnum[] getSkins(){
 		return SkinEnum.values();
 	}
-	
+
+
+	public int getColorIcon(){
+		Skin skin = SkinHolder.getSkin(context);
+		if(TextUtils.equals(skin.getEnumName(), "DEFAULT")) {
+			return preferences.getInt(COLOR_ICON, Color.parseColor("#F1F1F1"));
+		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
+			return preferences.getInt(COLOR_ICON, Color.parseColor("#2E3038"));
+		} else {
+			return skin.getColorIcon();
+		}
+	}
 	/**
 	 * 获取一个图片
 	 * @param context

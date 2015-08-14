@@ -2,7 +2,10 @@
 <resources>
     <attr name="actionBarMenuIconFilterByInstalled" format="reference"/>
     <!-- - app 主背景色 -->
-    <attr name="kThemeBackground" format="color"/>
+    <attr name="kThemeBackground" format="color|reference"/>
+
+    <!-- - app 主背景Dark色 -->
+    <attr name="kThemeBackgroundDark" format="color|reference"/>
 
 
 

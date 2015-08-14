@@ -11,6 +11,7 @@
     <string name="action_search">搜索</string>
     <string name="action_settings">设置</string>
     <string name="add">添加</string>
+    <string name="setting">设置</string>
 
 
 </resources>

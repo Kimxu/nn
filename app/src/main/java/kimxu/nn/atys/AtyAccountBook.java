@@ -35,12 +35,14 @@ import kimxu.nn.adapter.AccountBookAdapter;
 import kimxu.nn.basic.AtySupport;
 import kimxu.nn.list.SampleItemAnimator;
 import kimxu.nn.model.Bill;
+import kimxu.nn.skin.NoActionBarTheme;
 import kimxu.nn.utils.GlobalUtil;
 import kimxu.nn.utils.logger.Klog;
 
 /**
- * 主页
+ * 账单
  */
+@NoActionBarTheme
 public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPullRefreshListener {
 
     private FlyRefreshLayout mFlylayout;

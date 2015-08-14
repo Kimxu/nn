@@ -14,13 +14,15 @@ import kimxu.nn.utils.ColorUtil;
  */
 public enum SkinEnum implements Skin {
 
-    DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light_NoActionBar, Color.parseColor("#ffff7642")) {
+    DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light_NoActionBar, Color.parseColor("#ffff7642"),R.drawable.composer_button_light) {
         @Override
         public Drawable getPreviewDrawable(Context context) {
             return new ColorDrawable(Color.parseColor("#ffff7642"));
         }
     },
-    DRAK("\ue619\ue608", R.style.Skin_Dark,R.style.Skin_Dark_NoActionBar, Color.parseColor("#DB4D6D")) {
+    DRAK("\ue619\ue608", R.style.Skin_Dark,R.style.Skin_Dark_NoActionBar, Color.parseColor("#DB4D6D"),R.drawable.composer_button_dark) {
+
+
         @Override
         public Drawable getPreviewDrawable(Context context) {
             return new ColorDrawable(Color.parseColor("#DB4D6D"));
@@ -28,16 +30,19 @@ public enum SkinEnum implements Skin {
     };
 
 
+
     private String name;
     private int themeId;
     private int colorPrimary;
     private int noActionBarThemeId;
+    private int colorIcon;
 
-    SkinEnum(String name, int themeId,int noActionBarThemeId, int colorPrimary) {
+    SkinEnum(String name, int themeId,int noActionBarThemeId, int colorPrimary,int colorIcon) {
         this.name = name;
         this.noActionBarThemeId = noActionBarThemeId;
         this.themeId = themeId;
         this.colorPrimary = colorPrimary;
+        this.colorIcon=colorIcon;
     }
 
     @Override
@@ -58,24 +63,33 @@ public enum SkinEnum implements Skin {
     public int getThemeId() {
         return themeId;
     }
-
+    @Override
     public int getColorPrimary() {
         return colorPrimary;
     }
 
+
+
     /**
-     * 比正常颜色
-     * @return
+     * 比正常颜色浅
+     * @return int
      */
+    @Override
     public int getColorPrimaryDark() {
         return ColorUtil.darken(colorPrimary);
+    }
+
+    @Override
+    public int getColorIcon() {
+
+        return colorIcon;
     }
 
     /**
      * 获取在主题切换页面显示的预览图片
      *
-     * @param context
-     * @return
+     * @param context .
+     * @return Drawable
      */
     public abstract Drawable getPreviewDrawable(Context context);
 }

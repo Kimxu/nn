@@ -19,12 +19,14 @@ import kimxu.nn.R;
 import kimxu.nn.basic.AtySupport;
 import kimxu.nn.model.Account;
 import kimxu.nn.skin.NoActionBarTheme;
+import kimxu.nn.skin.TransparentrTitleBarTheme;
 import kimxu.nn.utils.GlobalUtil;
 import kimxu.nn.utils.PreferenceUtil;
 
 /**
  * 登陆界面
  */
+@TransparentrTitleBarTheme
 @NoActionBarTheme
 public class AtyLogin extends AtySupport {
 
@@ -37,7 +39,7 @@ public class AtyLogin extends AtySupport {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+       
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
 

@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/background</item>
         <item name="colorAccent">@color/background</item>
         <item name="kThemeBackground">@color/background</item>
+        <item name="kThemeBackgroundDark">@color/background_dark</item>
 
     </style>
     <style name="Skin.Light.NoActionBar" parent="Skin.Light">
@@ -18,6 +19,8 @@
         <item name="colorPrimaryDark">@color/abc_search_url_text</item>
         <item name="colorAccent">@color/abc_search_url_text</item>
         <item name="kThemeBackground">@color/abc_search_url_text</item>
+        <item name="kThemeBackgroundDark">@color/background_dark</item>
+
     </style>
     <style name="Skin.Dark.NoActionBar" parent="Skin.Dark">
         <item name="windowActionBar">false</item>

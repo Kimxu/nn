@@ -19,11 +19,10 @@ public abstract class AtySupport extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         mActivity = this;
-        SkinHolder.applySkin(this);
         StatusBarManager.applyTranslucentStatusBar(this);
+        SkinHolder.applySkin(this);
+        super.onCreate(savedInstanceState);
 
         }
     @Override

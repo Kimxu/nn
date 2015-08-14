@@ -56,7 +56,6 @@ public class SkinHolder {
 		}
 		return color;
 	}
-
 	/**
 	 * 比正常浅
 	 * @param context .
@@ -74,8 +73,29 @@ public class SkinHolder {
 		}
 		return color;
 	}
-    
-    /**
+
+	/**
+	 * icon颜色
+	 * @param context .
+	 * @return int
+	 */
+	public static int getColorIcon(Context context){
+		int color = Color.BLACK;
+		try{
+			Class<?> skinManagerClass = Class.forName("kimxu.nn.skin.manager.SkinManager");
+			Constructor<?> constructor = skinManagerClass.getConstructor(Context.class);
+			Method method = skinManagerClass.getMethod("getColorIcon");
+			color = (Integer) method.invoke(constructor.newInstance(context));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return color;
+	}
+
+
+
+
+	/**
      * 应用皮肤
      */
     public static void applySkin(Activity activity){
@@ -95,6 +115,9 @@ public class SkinHolder {
 			return;
 		}
 		int themeId = activity.getClass().isAnnotationPresent(NoActionBarTheme.class)?skin.getNoActionBarThemeId():skin.getThemeId();
+//		if (activity.getClass().isAnnotationPresent(TransparentrTitleBarTheme.class)){
+//			StatusBarManager.setStatusBarColor(activity, activity.getResources().getColor(R.color.transparent));
+//		}
 		activity.setTheme(themeId);
     }
 }

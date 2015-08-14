@@ -21,6 +21,7 @@ public class RayMenu extends RelativeLayout {
 
 	private ImageView mHintView;
 
+	private ViewGroup controlLayout;
 	public RayMenu(Context context) {
 		super(context);
 		init(context);
@@ -40,7 +41,7 @@ public class RayMenu extends RelativeLayout {
 
 		mRayLayout = (RayLayout) findViewById(R.id.item_layout);
 
-		final ViewGroup controlLayout = (ViewGroup) findViewById(R.id.control_layout);
+		controlLayout = (ViewGroup) findViewById(R.id.control_layout);
 		controlLayout.setClickable(true);
 		controlLayout.setOnTouchListener(new OnTouchListener() {
 
@@ -56,6 +57,10 @@ public class RayMenu extends RelativeLayout {
 		});
 
 		mHintView = (ImageView) findViewById(R.id.control_hint);
+	}
+
+	public ViewGroup getControlLayout() {
+		return controlLayout;
 	}
 
 	public void addItem(View item, OnClickListener listener) {

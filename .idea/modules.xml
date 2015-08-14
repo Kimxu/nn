@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/arcmenu/arcmenu.iml" filepath="$PROJECT_DIR$/arcmenu/arcmenu.iml" />
       <module fileurl="file://$PROJECT_DIR$/nn.iml" filepath="$PROJECT_DIR$/nn.iml" />
       <module fileurl="file://$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" filepath="$PROJECT_DIR$/pulltorefresh/pulltorefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/switchbutton/switchbutton.iml" filepath="$PROJECT_DIR$/switchbutton/switchbutton.iml" />
     </modules>
   </component>
 </project>

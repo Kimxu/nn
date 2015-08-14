@@ -33,4 +33,6 @@ public interface Skin {
     int getColorPrimary();
 
     int getColorPrimaryDark();
+
+    int getColorIcon();
 }

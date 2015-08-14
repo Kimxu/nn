@@ -3,12 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-
     <kimxu.arcmenu.RayMenu
         android:layout_alignParentBottom="true"
         android:id="@+id/ray_menu"

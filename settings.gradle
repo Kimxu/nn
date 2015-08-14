@@ -1,1 +1,1 @@
-include ':app', ':arcmenu', ':pulltorefresh'
+include ':app', ':arcmenu', ':pulltorefresh', ':switchbutton'
