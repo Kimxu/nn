@@ -13,7 +13,8 @@ import kimxu.arcmenu.RayMenu;
 import kimxu.nn.R;
 import kimxu.nn.basic.AtySupport;
 import kimxu.nn.skin.NoActionBarTheme;
-import kimxu.nn.skin.SkinHolder;
+import kimxu.nn.skin.manager.SkinAttrParser;
+
 @NoActionBarTheme
 public class AtyMain extends AtySupport {
 
@@ -34,8 +35,11 @@ public class AtyMain extends AtySupport {
 
 
     public void initMenu() {
+
+        SkinAttrParser.MainIcon  skinAttrParser= new SkinAttrParser.MainIcon(mActivity);
         final ViewGroup controlLayout = rayMenu.getControlLayout();
-        controlLayout.setBackground(getResources().getDrawable(SkinHolder.getColorIcon(mActivity)));
+        controlLayout.setBackground(skinAttrParser.getMenuIcon());
+        skinAttrParser.recycle();
         final int itemCount = ITEM_DRAWABLES.length;
         for (int i = 0; i < itemCount; i++) {
             ImageView item = new ImageView(this);

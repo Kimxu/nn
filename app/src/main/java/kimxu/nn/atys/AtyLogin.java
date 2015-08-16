@@ -26,30 +26,27 @@ import kimxu.nn.utils.PreferenceUtil;
 /**
  * 登陆界面
  */
-@TransparentrTitleBarTheme
 @NoActionBarTheme
+@TransparentrTitleBarTheme(color = R.color.white)
 public class AtyLogin extends AtySupport {
 
     @Bind(R.id.username)
     EditText username;
     @Bind(R.id.password)
     EditText password;
-    private String pwd;
+     private String pwd;
     private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-       
+
         super.onCreate(savedInstanceState);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.aty_login);
-
         isFirst();
         ButterKnife.bind(this);
 
-
     }
+
 
     @Override
     public String getActivityName() {
@@ -59,8 +56,8 @@ public class AtyLogin extends AtySupport {
     private void isFirst() {
 
         if (!PreferenceUtil.getBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, true)) {
-         AtyMain.startMe(mActivity);
-          finish();
+            AtyMain.startMe(mActivity);
+            finish();
         }
     }
 

@@ -13,5 +13,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface TransparentrTitleBarTheme {
-
+    //标题栏颜色
+    int color() ;
 }

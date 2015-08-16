@@ -6,7 +6,10 @@
 
     <!-- - app 主背景Dark色 -->
     <attr name="kThemeBackgroundDark" format="color|reference"/>
-
+    <!-- button 背景-->
+    <attr name="buttonBackground" format="reference"/>
+    <!-- main 主页 菜单按钮 -->
+    <attr name="menuIcon" format="reference"/>
 
 
 

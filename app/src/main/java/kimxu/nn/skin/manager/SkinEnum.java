@@ -14,13 +14,13 @@ import kimxu.nn.utils.ColorUtil;
  */
 public enum SkinEnum implements Skin {
 
-    DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light_NoActionBar, Color.parseColor("#ffff7642"),R.drawable.composer_button_light) {
+    DEFAULT("\ue60d\ue614", R.style.Skin_Light, R.style.Skin_Light_NoActionBar, Color.parseColor("#ffff7642")) {
         @Override
         public Drawable getPreviewDrawable(Context context) {
             return new ColorDrawable(Color.parseColor("#ffff7642"));
         }
     },
-    DRAK("\ue619\ue608", R.style.Skin_Dark,R.style.Skin_Dark_NoActionBar, Color.parseColor("#DB4D6D"),R.drawable.composer_button_dark) {
+    DRAK("\ue619\ue608", R.style.Skin_Dark,R.style.Skin_Dark_NoActionBar, Color.parseColor("#DB4D6D")) {
 
 
         @Override
@@ -35,15 +35,13 @@ public enum SkinEnum implements Skin {
     private int themeId;
     private int colorPrimary;
     private int noActionBarThemeId;
-    private int colorIcon;
 
-    SkinEnum(String name, int themeId,int noActionBarThemeId, int colorPrimary,int colorIcon) {
+    SkinEnum(String name, int themeId,int noActionBarThemeId, int colorPrimary) {
         this.name = name;
         this.noActionBarThemeId = noActionBarThemeId;
         this.themeId = themeId;
         this.colorPrimary = colorPrimary;
-        this.colorIcon=colorIcon;
-    }
+     }
 
     @Override
     public int getNoActionBarThemeId() {
@@ -79,11 +77,6 @@ public enum SkinEnum implements Skin {
         return ColorUtil.darken(colorPrimary);
     }
 
-    @Override
-    public int getColorIcon() {
-
-        return colorIcon;
-    }
 
     /**
      * 获取在主题切换页面显示的预览图片

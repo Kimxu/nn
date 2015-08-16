@@ -39,7 +39,7 @@ public class SkinManager {
 		SkinHolder.setSkin(skinEnum);
 		setColorPrimary(skinEnum.getColorPrimary());
 		setColorPrimaryDark(skinEnum.getColorPrimaryDark());
-		setColorIcon(skinEnum.getColorIcon());
+
 	}
 	
 	public void setColorPrimary(int color){
@@ -48,9 +48,6 @@ public class SkinManager {
 	
 	public void setColorPrimaryDark(int color){
 		preferences.edit().putInt(COLOR_PRIMARY_DARK, color).apply();
-	}
-	public void setColorIcon(int color){
-		preferences.edit().putInt(COLOR_ICON, color).apply();
 	}
 
 	public int getColorPrimary(){
@@ -83,17 +80,6 @@ public class SkinManager {
 		return SkinEnum.values();
 	}
 
-
-	public int getColorIcon(){
-		Skin skin = SkinHolder.getSkin(context);
-		if(TextUtils.equals(skin.getEnumName(), "DEFAULT")) {
-			return preferences.getInt(COLOR_ICON, Color.parseColor("#F1F1F1"));
-		} else if(TextUtils.equals(skin.getEnumName(), "DARK")) {
-			return preferences.getInt(COLOR_ICON, Color.parseColor("#2E3038"));
-		} else {
-			return skin.getColorIcon();
-		}
-	}
 	/**
 	 * 获取一个图片
 	 * @param context

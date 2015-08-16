@@ -74,25 +74,6 @@ public class SkinHolder {
 		return color;
 	}
 
-	/**
-	 * icon颜色
-	 * @param context .
-	 * @return int
-	 */
-	public static int getColorIcon(Context context){
-		int color = Color.BLACK;
-		try{
-			Class<?> skinManagerClass = Class.forName("kimxu.nn.skin.manager.SkinManager");
-			Constructor<?> constructor = skinManagerClass.getConstructor(Context.class);
-			Method method = skinManagerClass.getMethod("getColorIcon");
-			color = (Integer) method.invoke(constructor.newInstance(context));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return color;
-	}
-
-
 
 
 	/**
