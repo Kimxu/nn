@@ -177,7 +177,7 @@ public class AtyAccountBook extends AtySupport implements FlyRefreshLayout.OnPul
         hideRefreshAnimation();
         refreshItem = item;
         //这里使用一个ImageView设置成MenuItem的ActionView，这样我们就可以使用这个ImageView显示旋转动画了
-        ImageView refreshActionView = (ImageView) getLayoutInflater().inflate(R.layout.action_view, null);
+        ImageView refreshActionView = (ImageView) getLayoutInflater().inflate(R.layout.grid_list_view, null);
         refreshActionView.setImageResource(R.drawable.ic_add_white_18dp);
         refreshItem.setActionView(refreshActionView);
         //显示刷新动画

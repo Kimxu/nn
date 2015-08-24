@@ -20,7 +20,7 @@
             <item android:state_pressed="true">
                 <shape android:shape="oval">
                     <corners android:radius="80dp" />
-                    <solid android:color="@color/background_dark" />
+                    <solid android:color="@color/background_primary" />
                     <size
                         android:width="162dp"
                         android:height="162dp" />

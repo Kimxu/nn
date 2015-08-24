@@ -12,6 +12,8 @@ import kimxu.nn.utils.logger.Klog;
  * Main Application
  */
 public class NNApplication extends Application {
+    public static boolean updateSkin;	// 首页在onResume()的时候检查此字段，如果为true就更新皮肤
+
     @Override
     public void onCreate() {
         super.onCreate();

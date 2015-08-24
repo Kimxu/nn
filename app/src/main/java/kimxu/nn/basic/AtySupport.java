@@ -51,7 +51,7 @@ public abstract class AtySupport extends AppCompatActivity {
     public abstract String getActivityName();
 
 
-    private void setTitleBarColor() {
+    public void setTitleBarColor() {
         Class clazz = mActivity.getClass();
         if (clazz.isAnnotationPresent(TransparentrTitleBarTheme.class)) {
             Annotation[] annotations = clazz.getAnnotations();

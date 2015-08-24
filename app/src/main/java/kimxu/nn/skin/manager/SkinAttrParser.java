@@ -36,10 +36,7 @@ public class SkinAttrParser {
 	 * 主页icon
 	 */
 	public static class MainIcon {
-		private static final int[] ATTRS = new int[] {
-				R.attr.menuIcon
 
-			};
 
 		private TypedArray typedArray;
 
@@ -48,13 +45,14 @@ public class SkinAttrParser {
 			if (skin == null) {
 				return;
 			}
-			typedArray = context.obtainStyledAttributes(skin.getThemeId(), ATTRS);
+			typedArray = context.obtainStyledAttributes(skin.getThemeId(), R.styleable.MainIcon);
 		}
 		public Drawable getMenuIcon() {
 			if (typedArray == null || typedArray.length() <= 0) {
 				return null;
 			}
-			return typedArray.getDrawable(0);
+			return typedArray.getDrawable(R.styleable.MainIcon_menuIcon);
+			//return null;
 		}
 
 		public void recycle() {

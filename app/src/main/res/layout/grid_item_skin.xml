@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Grid项 - 皮肤 -->
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+	<ImageView
+	    android:id="@+id/image_skinGridItem_preview" 
+	    android:layout_width="match_parent"
+	    android:layout_height="150dip"
+	    android:scaleType="centerCrop"
+	    android:contentDescription="@string/app_name"/>
+	
+	<TextView 
+	    android:id="@+id/text_skinGridItem_name"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:textColor="@color/white"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center_horizontal"
+	    android:ems="1"
+	    android:textSize="16dip"
+	    android:layout_marginBottom="12dip"
+	    android:layout_alignBottom="@id/image_skinGridItem_preview"/>
+	
+	<ImageView
+	    android:id="@+id/image_skinGridItem_checkedFlag" 
+	    android:layout_width="16dip"
+	    android:layout_height="16dip"
+	    android:src="@drawable/radio_checked"
+	    android:contentDescription="@string/app_name"
+	    android:layout_alignParentRight="true"
+	    android:layout_marginTop="4dip"
+	    android:layout_marginRight="4dip"/>
+</RelativeLayout>

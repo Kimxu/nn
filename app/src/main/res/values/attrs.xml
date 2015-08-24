@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="actionBarMenuIconFilterByInstalled" format="reference"/>
+    <attr name="actionBarMenuIconFilterByInstalled" format="reference" />
     <!-- - app 主背景色 -->
-    <attr name="kThemeBackground" format="color|reference"/>
+    <attr name="kThemeBackground" format="color|reference" />
 
     <!-- - app 主背景Dark色 -->
-    <attr name="kThemeBackgroundDark" format="color|reference"/>
+    <attr name="kThemeBackgroundDark" format="color|reference" />
     <!-- button 背景-->
-    <attr name="buttonBackground" format="reference"/>
-    <!-- main 主页 菜单按钮 -->
-    <attr name="menuIcon" format="reference"/>
+    <attr name="buttonBackground" format="reference" />
 
+    <declare-styleable name="MainIcon">
+        <!-- main 主页 菜单按钮 -->
+        <attr name="menuIcon" format="reference" />
+    </declare-styleable>
 
-
-
+    <declare-styleable name="SettingLayout">
+        <!-- settingLayout has checked-->
+        <attr name="hasChecked" format="boolean" />
+        <attr name="text" format="string" />
+    </declare-styleable>
 
 
 
     <!--<attr name="navigationTabStripIconList" format="color|reference"/>-->
     <!--&lt;!&ndash; 导航页 - 标签栏 - 文本 - 颜色 &ndash;&gt;-->
     <!--<attr name="navigationTabStripTextColor" format="color"/>-->
-<!-- 导航页 - 标签栏 - 背景 -->
+    <!-- 导航页 - 标签栏 - 背景 -->
     <!--<attr name="navigationTabStripBackground" format="color|reference"/>-->
     <!--<attr name="yyhCommonForegroundColor" format="color|reference"/>-->
     <!--<attr name="yyhCommonBackgroundColor" format="color|reference"/>-->

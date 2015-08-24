@@ -84,10 +84,11 @@ public class AtyLogin extends AtySupport {
                     PreferenceUtil.putBoolean(mActivity, AppConstant.IS_FIRST_LOGIN, false);
                     AtyMain.startMe(mActivity);
                     finish();
-                }
-                GlobalUtil.closeDialog();
-                GlobalUtil.showToast(mActivity, "密码或账号错误");
 
+                }else {
+                    GlobalUtil.closeDialog();
+                    GlobalUtil.showToast(mActivity, "密码或账号错误");
+                }
             }
 
             @Override

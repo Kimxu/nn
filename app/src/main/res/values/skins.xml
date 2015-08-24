@@ -3,10 +3,10 @@
     <!-- 亮色皮肤 -->
     <style name="Skin.Light" parent="BaseActivityTheme">
         <item name="colorPrimary">@color/background</item>
-        <item name="colorPrimaryDark">@color/background</item>
+        <item name="colorPrimaryDark">@color/background_primary</item>
         <item name="colorAccent">@color/background</item>
         <item name="kThemeBackground">@color/background</item>
-        <item name="kThemeBackgroundDark">@color/background_dark</item>
+        <item name="kThemeBackgroundDark">@color/background_primary</item>
         <item name="buttonBackground">@drawable/bg_btn_login_light</item>
         <item name="menuIcon">@drawable/composer_button_light</item>
     </style>
@@ -16,12 +16,12 @@
     </style>
     <!-- 暗色皮肤 -->
     <style name="Skin.Dark" parent="BaseActivityTheme">
-        <item name="colorPrimary">@color/abc_search_url_text</item>
-        <item name="colorPrimaryDark">@color/abc_search_url_text</item>
-        <item name="colorAccent">@color/abc_search_url_text</item>
-        <item name="kThemeBackground">@color/abc_search_url_text</item>
+        <item name="colorPrimary">@color/dark_background</item>
+        <item name="colorPrimaryDark">@color/dark_background_primary</item>
+        <item name="colorAccent">@color/dark_background</item>
+        <item name="kThemeBackground">@color/dark_background</item>
+        <item name="kThemeBackgroundDark">@color/dark_background_primary</item>
         <item name="buttonBackground">@drawable/bg_btn_login_dark</item>
-        <item name="kThemeBackgroundDark">@color/background_dark</item>
         <item name="menuIcon">@drawable/composer_button_dark</item>
     </style>
     <style name="Skin.Dark.NoActionBar" parent="Skin.Dark">

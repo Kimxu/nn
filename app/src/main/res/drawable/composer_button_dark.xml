@@ -20,7 +20,7 @@
             <item android:state_pressed="true">
                 <shape android:shape="oval">
                     <corners android:radius="80dp" />
-                    <solid android:color="@color/abc_search_url_text" />
+                    <solid android:color="@color/dark_background_primary" />
                     <size
                         android:width="162dp"
                         android:height="162dp" />
@@ -30,7 +30,7 @@
             <item>
                 <shape android:shape="oval">
                     <corners android:radius="80dp" />
-                    <solid android:color="@color/abc_search_url_text" />
+                    <solid android:color="@color/dark_background" />
                     <size
                         android:width="162dp"
                         android:height="162dp" />

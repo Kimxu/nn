@@ -40,10 +40,15 @@
         <activity android:name=".atys.AtyRegist" />
         <activity android:name=".atys.AtyAccountBook" />
         <activity android:name=".atys.AtyAdd" />
-        <activity android:name=".atys.AtyMain" />
+        <activity android:name=".atys.AtyMain"
+            android:launchMode="singleTask"
+            />
         <activity
             android:name=".atys.AtySetting"
             android:label="@string/setting"/>
+        <activity android:name=".atys.AtySettingSkin"
+            android:label="@string/setting_skin"
+            />
 
     </application>
 

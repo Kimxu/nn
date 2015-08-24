@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import kimxu.arcmenu.RayMenu;
 import kimxu.nn.R;
 import kimxu.nn.basic.AtySupport;
+import kimxu.nn.basic.NNApplication;
 import kimxu.nn.skin.NoActionBarTheme;
 import kimxu.nn.skin.manager.SkinAttrParser;
 
@@ -44,7 +45,6 @@ public class AtyMain extends AtySupport {
         for (int i = 0; i < itemCount; i++) {
             ImageView item = new ImageView(this);
             item.setImageResource(ITEM_DRAWABLES[i]);
-
             final int position = i;
             rayMenu.addItem(item, new View.OnClickListener() {
                 @Override
@@ -70,6 +70,27 @@ public class AtyMain extends AtySupport {
                 break;
         }
     }
+
+    @Override
+    public void onResume() {
+        tryUpdateSkin();
+        super.onResume();
+
+    }
+
+    private void tryUpdateSkin() {
+
+        // 标记为已更新皮肤
+        if (!NNApplication.updateSkin) {
+            return;
+        }
+        NNApplication.updateSkin = false;
+        setTitleBarColor();
+        SkinAttrParser.MainIcon  skinAttrParser= new SkinAttrParser.MainIcon(mActivity);
+        final ViewGroup controlLayout = rayMenu.getControlLayout();
+        controlLayout.setBackground(skinAttrParser.getMenuIcon());
+    }
+
 
 
     @Override

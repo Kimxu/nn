@@ -15,8 +15,8 @@ import kimxu.nn.widget.SettingLayout;
 
 public class AtySetting extends AtySupport {
 
-    @Bind(R.id.set_1)
-    SettingLayout set1;
+    @Bind(R.id.set_skin)
+    SettingLayout setSkin;
     @Bind(R.id.set_2)
     SettingLayout set2;
     @Bind(R.id.set_3)
@@ -29,33 +29,33 @@ public class AtySetting extends AtySupport {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.aty_setting);
         ButterKnife.bind(this);
-        set1.setSwitchButtonListener(new SettingLayout.SwitchCallBack() {
+        setSkin.setSettingLayoutListener(new SettingLayout.SwitchCallBack() {
             @Override
             public void callback(CompoundButton buttonView, boolean isChecked) {
-                Klog.d("Ss" + buttonView.getId()+isChecked);
+               AtySettingSkin.startMe(mActivity);
             }
         });
-        set2.setSwitchButtonListener(new SettingLayout.SwitchCallBack() {
+        set2.setSettingLayoutListener(new SettingLayout.SwitchCallBack() {
             @Override
             public void callback(CompoundButton buttonView, boolean isChecked) {
-                Klog.d("Ss" + buttonView.getId()+isChecked);
+                Klog.d("Ss");
             }
         });
-        set3.setSwitchButtonListener(new SettingLayout.SwitchCallBack() {
+        set3.setSettingLayoutListener(new SettingLayout.SwitchCallBack() {
             @Override
             public void callback(CompoundButton buttonView, boolean isChecked) {
-                Klog.d("Ss" + buttonView.getId()+isChecked);
+                Klog.d("Ss" );
             }
         });
-        set4.setSwitchButtonListener(new SettingLayout.SwitchCallBack() {
+        set4.setSettingLayoutListener(new SettingLayout.SwitchCallBack() {
             @Override
             public void callback(CompoundButton buttonView, boolean isChecked) {
-                Klog.d("Ss" + buttonView.getId()+isChecked);
+                Klog.d("Ss");
             }
         });
     }
 
-    @OnClick({R.id.set_1, R.id.set_2, R.id.set_3, R.id.set_4})
+    @OnClick({R.id.set_skin, R.id.set_2, R.id.set_3, R.id.set_4})
     public void set1(SettingLayout v) {
         v.slideToChecked();
     }

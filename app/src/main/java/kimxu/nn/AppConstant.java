@@ -5,7 +5,7 @@ package kimxu.nn;
  */
 public class AppConstant {
     public static final String IS_FIRST_LOGIN="isFirstLogin";
-    public static final String USERNAME="usernam";
+    public static final String USERNAME="username";
     public static final boolean  IS_DEBUG= true;
 
 }

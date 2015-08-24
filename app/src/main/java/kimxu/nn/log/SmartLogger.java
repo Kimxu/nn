@@ -282,6 +282,7 @@ public class SmartLogger{
             }
 
             if (params != null) {
+
                 MobclickAgent.onEvent(context, eventId, params);
             } else {
                 MobclickAgent.onEvent(context, eventId);

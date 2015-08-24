@@ -10,8 +10,13 @@
 
     <color name="grayfont">#C7C7C7</color>
     <color name="background">#ffff7642</color>
+    <color name="background_primary">#ffff7992</color>
 
-    <color name="background_dark">#ffff7992</color>
+    <color name="dark_background">#aaa222</color>
+    <color name="dark_background_primary">#acc9</color>
+
+
+
 
     <color name="gray_normal">#c0c0c0</color>
     <color name="btn_gray_pressed_status">#b5b5b6</color>
